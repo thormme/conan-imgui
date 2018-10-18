@@ -12,15 +12,22 @@ endif(WIN32 AND MSVC AND BUILD_SHARED_LIBS)
 set(SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/source_subfolder)
 set(EXTRA_FONTS_DIR ${SOURCE_DIR}/misc/fonts)
 
-set(SOURCE_FILES ${SOURCE_DIR}/imgui_draw.cpp
+set(SOURCE_FILES ${SOURCE_DIR}/imgui_demo.cpp
+                 ${SOURCE_DIR}/misc/cpp/imgui_stdlib.cpp
+                 ${SOURCE_DIR}/misc/freetype/imgui_freetype.cpp
+                 ${SOURCE_DIR}/misc/fonts/binary_to_compressed_c.cpp
+                 ${SOURCE_DIR}/imgui_draw.cpp
+                 ${SOURCE_DIR}/imgui_demo.cpp
                  ${SOURCE_DIR}/imgui.cpp
-                 ${SOURCE_DIR}/imgui_demo.cpp)
-set(HEADER_FILES ${SOURCE_DIR}/imconfig.h
+                 ${SOURCE_DIR}/imgui_widgets.cpp)
+set(HEADER_FILES ${SOURCE_DIR}/misc/cpp/imgui_stdlib.h
+                 ${SOURCE_DIR}/misc/freetype/imgui_freetype.h
+                 ${SOURCE_DIR}/imstb_rectpack.h
+                 ${SOURCE_DIR}/imstb_truetype.h
                  ${SOURCE_DIR}/imgui_internal.h
-                 ${SOURCE_DIR}/imgui.h
-                 ${SOURCE_DIR}/stb_rect_pack.h
-                 ${SOURCE_DIR}/stb_textedit.h
-                 ${SOURCE_DIR}/stb_truetype.h)
+                 ${SOURCE_DIR}/imstb_textedit.h
+                 ${SOURCE_DIR}/imconfig.h
+                 ${SOURCE_DIR}/imgui.h)
 set(EXTRA_FONTS_FILES ${EXTRA_FONTS_DIR}/Karla-Regular.ttf
                       ${EXTRA_FONTS_DIR}/ProggyTiny.ttf
                       ${EXTRA_FONTS_DIR}/ProggyClean.ttf

@@ -8,7 +8,7 @@ import os
 
 class IMGUIConan(ConanFile):
     name = "imgui"
-    version = "1.65"
+    version = "master"
     url = "https://github.com/bincrafters/conan-imgui"
     homepage = "https://github.com/ocornut/imgui"
     description = "Bloat-free Immediate Mode Graphical User interface for C++ with minimal dependencies"
@@ -21,13 +21,14 @@ class IMGUIConan(ConanFile):
     options = {"shared": [True, False], "fPIC": [True, False]}
     default_options = "shared=False", "fPIC=True"
     source_subfolder = "source_subfolder"
+    requires = "freetype/2.9.0@bincrafters/stable"
 
     def config_options(self):
         if self.settings.os == 'Windows':
             del self.options.fPIC
 
     def source(self):
-        tools.get("{0}/archive/v{1}.tar.gz".format(self.homepage, self.version))
+        tools.get("{0}/archive/{1}.tar.gz".format(self.homepage, self.version))
         extracted_dir = self.name + "-" + self.version
         os.rename(extracted_dir, self.source_subfolder)
 
